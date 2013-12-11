@@ -1,0 +1,4 @@
+images-rotation
+===============
+
+jQuery plugin
