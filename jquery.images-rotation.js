@@ -1,5 +1,5 @@
 /*
- * Images rotation jQuery plugin | 2013-12-11
+ * Images rotation jQuery plugin | 2013-12-12
  * Copyright (c) 2013 sladex | MIT License
  * https://github.com/sladex/images-rotation
  */
@@ -8,7 +8,7 @@ $.fn.imagesRotation = function (options) {
     var defaults = {
             images: [],         // urls to images
             dataAttr: 'images', // html5 data- attribute which contains an array with urls to images
-            imgSelector: null,  // element to change
+            imgSelector: 'img', // element to change
             interval: 1000,     // ms
             intervalFirst: 500, // first image change, ms
             callback: null      // first argument would be the current image url
@@ -22,7 +22,7 @@ $.fn.imagesRotation = function (options) {
             $el.removeData('imagesRotaionInterval');
         },
         getImagesArray = function ($this) {
-            var images = settings.images.length ? settings.images : eval($this.data(settings.dataAttr));
+            var images = settings.images.length ? settings.images : $this.data(settings.dataAttr);
             return $.isArray(images) ? images : false;
         },
         preload = function (arr) {  // images preloader
@@ -53,7 +53,7 @@ $.fn.imagesRotation = function (options) {
                     index = (prevIndex + 1 < imagesLength) ? prevIndex + 1 : 0,
                     nextIndex = (index + 1 < imagesLength) ? index + 1 : 0;
                 $this.data('imagesRotationIndex', index);
-                if ($img) {
+                if ($img && $img.length > 0) {
                     $img.attr('src', images[index]);
                 }
                 if (settings.callback) {
