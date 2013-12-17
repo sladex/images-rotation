@@ -1,5 +1,5 @@
 /*
- * Images rotation jQuery plugin | 2013-12-12
+ * Images rotation jQuery plugin | 2013-12-17
  * Copyright (c) 2013 sladex | MIT License
  * https://github.com/sladex/images-rotation
  */
@@ -74,7 +74,7 @@ $.fn.imagesRotation = function (options) {
         clearRotationInterval($(this));
     }).on('imageRotationRemove', function () {
         var $this = $(this);
-        $this.off('mouseenter.imageRotation mouseleave.imageRotation');
+        $this.off('.imageRotation');
         clearRotationInterval($this);
     });
 };
