@@ -1,6 +1,6 @@
 /*
- * Images rotation jQuery plugin | 2013-12-17
- * Copyright (c) 2013 sladex | MIT License
+ * Images rotation jQuery plugin | 2014-08-12
+ * Copyright (c) 2013-2014 sladex | MIT License
  * https://github.com/sladex/images-rotation
  */
 
@@ -43,7 +43,7 @@ $.fn.imagesRotation = function (options) {
 
     init.call(this);
 
-    this.on('mouseenter.imageRotation', function () {
+    this.on('mouseenter.imagesRotation', function () {
         var $this = $(this),
             $img = settings.imgSelector ? $(settings.imgSelector, $this) : null,
             images = getImagesArray($this),
@@ -54,7 +54,12 @@ $.fn.imagesRotation = function (options) {
                     nextIndex = (index + 1 < imagesLength) ? index + 1 : 0;
                 $this.data('imagesRotationIndex', index);
                 if ($img && $img.length > 0) {
-                    $img.attr('src', images[index]);
+                    if ($img.is('img')) {
+                        $img.attr('src', images[index]);
+                    }
+                    else {
+                        $img.css('background-image', 'url(' + images[index] + ')');
+                    }
                 }
                 if (settings.callback) {
                     settings.callback(images[index]);
@@ -70,15 +75,15 @@ $.fn.imagesRotation = function (options) {
             }, settings.intervalFirst);
             $this.data('imagesRotaionTimeout', timeout);
         }
-    }).on('mouseleave.imageRotation', function () {
+    }).on('mouseleave.imagesRotation', function () {
         clearRotationInterval($(this));
-    }).on('imageRotationRemove', function () {
+    }).on('imagesRotationRemove', function () {
         var $this = $(this);
-        $this.off('.imageRotation');
+        $this.off('.imagesRotation');
         clearRotationInterval($this);
     });
 };
 
 $.fn.imagesRotationRemove = function () {
-    this.trigger('imageRotationRemove');
+    this.trigger('imagesRotationRemove');
 };

@@ -2,6 +2,7 @@ Images rotation jQuery plugin
 ===============
 
 Plugin switches the images while you are holding a mouse cursor on the element.
+Animates both `src` attribute for images and `background-image` attribute for any other element.
 
 Live demo: http://sladex.org/images-rotation/
 
@@ -23,11 +24,16 @@ Options
 ---------------
 - `images` Push the images array via Javascript. _Default is '[]'_
 - `dataAttr` Change html5 data- attribute name. _Default is 'images'_
-- `imgSelector` jQuery selector for the image element to makes changes for. _Default is 'img'_
+- `imgSelector` jQuery selector for the element to makes changes for. _Default is 'img'_
 - `interval` Interval between one image switches to another, in ms. _Default is '1000'_
 - `intervalFirst` Time delay for the very first switch. _Default is '500'_
 - `callback` Callback function, first argument would be the current image url. _Default is 'null'_
 
+Changelog
+---------------
+### 0.1.2 (2014/08/12) ###
+* `background-image` support
+
 License
 ---------------
-Copyright (c) 2013 sladex, released under the MIT License.
+Copyright (c) 2013-2014 sladex, released under the MIT License.
